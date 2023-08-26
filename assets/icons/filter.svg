@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_480" data-name="Rectangle 480" width="12" height="12" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="filter" transform="translate(-67 -64)">
+    <rect id="Rectangle_379" data-name="Rectangle 379" width="30" height="30" rx="15" transform="translate(67 64)" fill="#fff"/>
+    <g id="icon" transform="translate(76 73)" clip-path="url(#clip-path)">
+      <path id="Path_1522" data-name="Path 1522" d="M628.412,299.414V292.4a.562.562,0,0,1,1.124,0v7.011a1.871,1.871,0,0,1,0,3.571v.273a.562.562,0,0,1-1.124,0v-.273a1.871,1.871,0,0,1,0-3.571ZM624.29,293.8v-1.4a.562.562,0,0,1,1.124,0v1.4a1.873,1.873,0,1,1-1.124,0Zm-4.121,4.117V292.4a.562.562,0,0,1,1.123,0v5.513a1.871,1.871,0,0,1,0,3.571v1.77a.562.562,0,0,1-1.123,0v-1.77a1.871,1.871,0,0,1,0-3.571Zm4.683-1.583a.749.749,0,1,0-.75-.749.748.748,0,0,0,.75.749Zm4.122,5.615a.749.749,0,1,0-.75-.748.748.748,0,0,0,.75.748Zm-8.244-1.5a.749.749,0,1,0-.75-.749.749.749,0,0,0,.75.749Zm4.683,2.807a.562.562,0,0,1-1.124,0v-6.127a.562.562,0,0,1,1.124,0Zm0,0" transform="translate(-618.859 -291.834)" fill="#1db854"/>
+    </g>
+  </g>
+</svg>
