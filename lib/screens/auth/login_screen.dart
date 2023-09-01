@@ -37,7 +37,13 @@ class LoginScreen extends StatelessWidget {
                   margin: EdgeInsetsDirectional.only(start: 30.w,end: 30.w,top: 145.h),
                   child:  IntlPhoneField(
                     decoration: const InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
                     ),
+
                     controller: controller.c1,
                     cursorColor: Colors.black87,
                     showCountryFlag: false,
