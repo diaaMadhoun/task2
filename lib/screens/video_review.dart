@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:task2/widgets/list/list_comments.dart';
 
 import '../widgets/search_widget.dart';
+import 'package:get/get.dart';
 
 class VideoReview extends StatelessWidget {
   const VideoReview({Key? key}) : super(key: key);
@@ -16,9 +17,14 @@ class VideoReview extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.grey,
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.grey,
+          ),
         ),
         actions: [
           Padding(
@@ -92,7 +98,7 @@ class VideoReview extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: Container(
-                    height: 60.h,
+                    height: 70.h,
                     decoration: const BoxDecoration(
                       color: Color(0xFFF1F2F3),
                       borderRadius: BorderRadius.only(
@@ -102,6 +108,7 @@ class VideoReview extends StatelessWidget {
                     ),
                     child: const Center(
                       child: SearchWidget(
+                        marginStart: 20,
                         prefixIcon: 'assets/icons/simple.svg',
                         color: Colors.white,
                         hint: 'Say something…',

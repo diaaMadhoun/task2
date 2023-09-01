@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:task2/widgets/product_card.dart';
 import 'package:task2/widgets/row_title.dart';
 import 'package:task2/widgets/search_widget.dart';
+import 'package:get/get.dart';
 
 class AutoParts extends StatelessWidget {
   const AutoParts({Key? key}) : super(key: key);
@@ -29,9 +30,14 @@ class AutoParts extends StatelessWidget {
           ),
         ),
         actions: [
-          Padding(
-              padding: EdgeInsetsDirectional.only(end: 20.w),
-              child: SvgPicture.asset('assets/icons/cart.svg')),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed('/my_order');
+            },
+            child: Padding(
+                padding: EdgeInsetsDirectional.only(end: 20.w),
+                child: SvgPicture.asset('assets/icons/cart.svg')),
+          ),
         ],
       ),
       body: SingleChildScrollView(

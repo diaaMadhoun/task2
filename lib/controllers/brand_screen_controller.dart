@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
+import 'package:task2/model/brands.dart';
 import '../api/api_controller.dart';
-import '../model/cars.dart';
 
-class BuyCarController extends GetxController{
 
-  List<Cars> cars = <Cars>[];
+class BrandScreenController extends GetxController{
+  List<Brands> brands = <Brands>[];
   bool loading = true;
 
 
@@ -16,8 +16,9 @@ class BuyCarController extends GetxController{
   }
 
 
+
   Future<void> _fetchData() async {
-    cars.assignAll(await ApiController().getCars());
+    brands.assignAll(await ApiController().getBrands());
     loading = false;
     update();
   }

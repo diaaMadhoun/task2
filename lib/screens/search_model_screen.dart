@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task2/widgets/videos_list.dart';
-import '../widgets/header_search.dart';
-import '../widgets/list/list_horizontal.dart';
-import '../widgets/list/list_vertical.dart';
 import '../widgets/row_title.dart';
+import '../widgets/search_widget.dart';
 
 class SearchModelScreen extends StatelessWidget {
   const SearchModelScreen({Key? key}) : super(key: key);
@@ -13,28 +12,32 @@ class SearchModelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+        title: const SearchWidget(prefixIcon: 'assets/icons/icon-search.svg', color: Colors.white, hint: 'Lexus LC'),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                  padding: EdgeInsetsDirectional.only(
-                      start: 20.w, end: 20.w, top: 8.h),
-                  child: const HeaderSearch(
-                      icon: Icons.arrow_back,
-                      suffixIcon: 'assets/icons/mic.svg')),
               Padding(
                 padding: EdgeInsetsDirectional.only(
                     end: 20.w, start: 20.w, top: 30.h),
                 child: Row(
                   children: [
                     Container(
+                      padding: const EdgeInsets.all(7),
                       width: 90.w,
                       height: 90.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
                       ),
+                      child: Image.asset('assets/images/pajun.png',width: 75.w,height: 50.h,),
                     ),
                     SizedBox(
                       width: 15.w,
@@ -88,6 +91,7 @@ class SearchModelScreen extends StatelessWidget {
                 ),
               ),
               Container(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
                 margin: EdgeInsets.only(top: 30.h),
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -100,47 +104,52 @@ class SearchModelScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 20.h,
-                      ),
-                      ListHorizontal(
-                          width: 101,
-                          height: 68,
-                          itemCount: 3,
-                          sizeBoxWidth: 15,
-                          color: const Color(0xFFF1F2F3),
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  'assets/images/proportion169.png',
-                                  fit: BoxFit.cover,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.only(bottom: 6.h),
-                                  width: 43.w,
-                                  height: 16.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(9),
-                                    color: Colors.black.withOpacity(0.7),
+                        height: 68.h,
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                          return SizedBox(
+                            width: 101.w,
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    'assets/images/proportion169.png',
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                    height: double.infinity,
                                   ),
-                                  child: Text(
-                                    'Exterior',
-                                    style: GoogleFonts.roboto(
-                                      fontSize: 8.sp,
-                                      color: Colors.white,
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    margin: EdgeInsets.only(bottom: 6.h),
+                                    width: 43.w,
+                                    height: 16.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(9),
+                                      color: Colors.black.withOpacity(0.7),
+                                    ),
+                                    child: Text(
+                                      'Exterior',
+                                      style: GoogleFonts.roboto(
+                                        fontSize: 8.sp,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          )),
+                              ],
+                            ),
+                          );
+                        }, separatorBuilder: (context, index) {
+                          return SizedBox(width: 15.w,);
+                        }, itemCount: 3),
+                      ),
                       const RowTitle  (
                           category: 'Lexus LC price list', allOrMor: 'All '),
                       SizedBox(
@@ -207,10 +216,48 @@ class SearchModelScreen extends StatelessWidget {
                       SizedBox(
                         height: 20.h,
                       ),
-                      const ListVertical(
-                        height: 86,
-                        color: Color(0xFFF1F2F3),
-                        child: Column(),
+                      ListView.builder(
+                        itemCount: 2,
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.only(bottom: 15.h),
+                            padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
+                            width: double.infinity,
+                            height: 86.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xFFF1F2F3),
+                            ),
+                            child: Row(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('2021 Lexus LC 500 Convertible: 7',maxLines : 1 ,style: GoogleFonts.roboto(
+                                      fontSize: 14.sp,
+                                      color: Colors.black,
+                                    ),),
+                                    const Spacer(),
+                                    Text('By Albertine  Sep 13,2020',style: GoogleFonts.roboto(
+                                      fontSize: 12.sp,
+                                      color: Colors.grey,
+                                    ),),
+                                  ],
+                                ),
+                                const Spacer(),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(4),
+                                  child: Image.asset('assets/images/rectangle522.png',fit: BoxFit.cover,width: 66.w,height: 66.h,),
+
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                       const RowTitle(
                           category: 'Videos', allOrMor: 'More '),
@@ -224,13 +271,41 @@ class SearchModelScreen extends StatelessWidget {
                       SizedBox(
                         height: 20.h,
                       ),
-                      ListHorizontal(
+                      SizedBox(
                         height: 180.h,
-                        width: 150,
-                        itemCount: 3,
-                        sizeBoxWidth: 15,
-                        color: const Color(0xFFF1F2F3),
-                        child: const Column(),
+                        child: ListView.separated(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                          return Container(
+                            padding: EdgeInsetsDirectional.only(top: 12.h,start: 15.w,end: 12.w),
+                            width: 150.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xFFF1F2F3),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SvgPicture.asset('assets/icons/heart.svg'),
+                                Image.asset('assets/images/tsan.png'),
+                                SizedBox(height: 18.h,),
+                                Text('Panamera',style: GoogleFonts.roboto(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),),
+                                SizedBox(height: 6.h,),
+                                Text('Panamera',style: GoogleFonts.roboto(
+                                  fontSize: 12.sp,
+                                  color: const Color(0xFF1DB854)
+                                ),),
+
+                              ],
+                            ),
+                          );
+                        }, separatorBuilder: (context, index) {
+                          return SizedBox(width: 15.w,);
+                        }, itemCount: 4),
                       ),
                     ],
                   ),

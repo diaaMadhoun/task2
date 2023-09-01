@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:task2/widgets/list/list_category.dart';
 import 'package:task2/widgets/sales_widget.dart';
 import '../model/categoryBrand.dart';
-import '../widgets/header_search.dart';
+import '../widgets/search_widget.dart';
 
 class SearchScreen extends StatelessWidget {
    const SearchScreen({Key? key}) : super(key: key);
@@ -24,85 +24,93 @@ class SearchScreen extends StatelessWidget {
     double sizeHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        titleSpacing: 0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const HeaderSearch(
-            icon: Icons.close, suffixIcon: 'assets/icons/mic.svg'),
+        title:  Row(
+          children: [
+            SizedBox(width: 20.w,),
+            const Icon(Icons.close,color: Colors.grey,),
+            const Expanded(child: SearchWidget(prefixIcon: 'assets/icons/icon-search.svg', color: Colors.white, hint: 'Search',marginStart: 20,)),
+          ],
+        ),
       ),
       backgroundColor: const Color(0xFFF1F2F3),
       body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(
-              height: sizeHeight / 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Text(
-                    'History',
-                    style: GoogleFonts.roboto(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const Spacer(),
-                  SvgPicture.asset('assets/icons/recycleBin.svg'),
-                  SizedBox(
-                    width: 7.w,
-                  ),
-                  Text(
-                    'Clear History',
-                    style: GoogleFonts.roboto(
-                      fontSize: 12.sp,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: sizeHeight / 20,
               ),
-            ),
-            SizedBox(
-              height: sizeHeight / 29,
-            ),
-            SizedBox(
-              height: 34.h,
-              width: double.infinity,
-              child: ListView.separated(
-                padding: EdgeInsetsDirectional.only(start: 20.w),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      width: 103.w,
-                      height: 34.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Colors.white,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  children: [
+                    Text(
+                      'History',
+                      style: GoogleFonts.roboto(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
                       ),
-                      child: Text(
-                        '3 Series Gt',
-                        style: GoogleFonts.roboto(
-                          fontSize: 14.sp,
+                    ),
+                    const Spacer(),
+                    SvgPicture.asset('assets/icons/recycleBin.svg'),
+                    SizedBox(
+                      width: 7.w,
+                    ),
+                    Text(
+                      'Clear History',
+                      style: GoogleFonts.roboto(
+                        fontSize: 12.sp,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: sizeHeight / 29,
+              ),
+              SizedBox(
+                height: 34.h,
+                width: double.infinity,
+                child: ListView.separated(
+                  padding: EdgeInsetsDirectional.only(start: 20.w),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        alignment: Alignment.center,
+                        width: 103.w,
+                        height: 34.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Colors.white,
                         ),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return SizedBox(
-                      width: 15.w,
-                    );
-                  },
-                  itemCount: 3),
-            ),
-            SizedBox(
-              height: 48.h,
-            ),
-            ListCategory(list: categories,
-              date: 'Dec,2020',
-            ),
-          ],
+                        child: Text(
+                          '3 Series Gt',
+                          style: GoogleFonts.roboto(
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        width: 15.w,
+                      );
+                    },
+                    itemCount: 3),
+              ),
+              SizedBox(
+                height: 48.h,
+              ),
+              ListCategory(list: categories,
+                date: 'Dec,2020',
+              ),
+            ],
+          ),
         ),
       ),
     );

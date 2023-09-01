@@ -25,13 +25,14 @@ class BnScreen extends StatelessWidget {
         ];
 
         return Scaffold(
-          body: items[controller.currentIndex.value].widget,
+          body: items[controller.currentIndex].widget,
           bottomNavigationBar: ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
             child: BottomNavigationBar(
+              backgroundColor: Colors.white,
               elevation: 10,
               type: BottomNavigationBarType.fixed,
               selectedItemColor: const Color(0xFF1DB854),
@@ -39,7 +40,7 @@ class BnScreen extends StatelessWidget {
               onTap: (int index) {
                 controller.changePage(index);
               },
-              currentIndex: controller.currentIndex.value,
+              currentIndex: controller.currentIndex,
               items: [
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset('assets/icons/home_outlined.svg'),

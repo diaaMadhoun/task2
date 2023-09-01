@@ -118,10 +118,7 @@ class BrandPorsche extends StatelessWidget {
 
                 }, itemCount: 4),
               ),
-              SizedBox(
-                height: 28.h,
-              ),
-               ListCategory(list: categories),
+               ListCategory(list: categories,paddingTop: 28),
               SizedBox(
                 height: 20.h,
               ),

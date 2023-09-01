@@ -10,9 +10,10 @@ class ListCategory extends StatefulWidget {
   List<CategoryBrand> list = [];
   int selectedCategory = 0;
   String? date;
+  double paddingTop;
 
 
-  ListCategory({Key? key , required this.list ,  this.date}) : super(key: key);
+  ListCategory({Key? key , required this.list ,  this.date , this.paddingTop =0}) : super(key: key);
 
   @override
   State<ListCategory> createState() => _ListCategoryState();
@@ -25,12 +26,13 @@ class _ListCategoryState extends State<ListCategory> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.only(left: 20.w,right: 20.w,top: widget.paddingTop.h),
           child: Row(
             children: [
               SizedBox(
                 height: 23.h,
                 child: ListView.builder(
+
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.horizontal,

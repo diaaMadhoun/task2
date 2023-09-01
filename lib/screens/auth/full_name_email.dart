@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task2/widgets/costum_button.dart';
 
-import '../widgets/custom_edit_text.dart';
+import '../../widgets/custom_edit_text.dart';
 
 class FullNameEmail extends StatelessWidget {
   const FullNameEmail({Key? key}) : super(key: key);

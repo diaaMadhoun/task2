@@ -43,6 +43,11 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   http: ^1.0.0
   shared_preferences: ^2.1.1
+  cached_network_image: ^3.2.3
+  flutter_spinkit: ^5.2.0
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.1.5
+  intl_phone_field: ^3.2.0
 
 
 
@@ -71,85 +76,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/icons/icon-select.svg
-   - assets/icons/icon-twitter.svg
-   - assets/icons/icons8-facebook.svg
-   - assets/icons/search.svg
-   - assets/icons/close.svg
-   - assets/icons/down.svg
-   - assets/icons/giulia.svg
-   - assets/icons/elmiraj.svg
-   - assets/icons/gt-r.svg
-   - assets/icons/down.svg
-   - assets/icons/notification.svg
-   - assets/icons/home.svg
-   - assets/icons/home_outlined.svg
-   - assets/icons/buy-car_outlined.svg
-   - assets/icons/community_outlined.svg
-   - assets/icons/profile_outlined.svg
-   - assets/icons/profile.svg
-   - assets/icons/buy-car.svg
-   - assets/icons/community.svg
-   - assets/icons/arrow.svg
-   - assets/icons/icon-search.svg
-   - assets/icons/filter.svg
-   - assets/icons/like.svg
-   - assets/icons/add.svg
-   - assets/icons/setting.svg
-   - assets/icons/comment.svg
-   - assets/icons/share.svg
-   - assets/icons/like.svg
-   - assets/icons/category.svg
-   - assets/icons/order.svg
-   - assets/icons/driver.svg
-   - assets/icons/maintain.svg
-   - assets/icons/autoParts.svg
-   - assets/icons/mic.svg
-   - assets/icons/myCars.svg
-   - assets/icons/recycleBin.svg
-   - assets/icons/heart.svg
-   - assets/icons/starr.svg
-   - assets/icons/simple.svg
-   - assets/icons/like_outlined.svg
-   - assets/icons/starr_outlined.svg
-   - assets/icons/starrGreen.svg
-   - assets/icons/cart.svg
-   - assets/icons/hide.svg
-   - assets/icons/show.svg
-   - assets/icons/masterCard.svg
-   - assets/icons/viewdetails.svg
-   - assets/icons/enginePower.svg
-   - assets/icons/maxTorque.svg
-   - assets/icons/acceleration.svg
-   - assets/images/proportion21.png
-   - assets/images/proportion169.png
-   - assets/images/car-pic.png
-   - assets/images/avatar.png
-   - assets/images/giulia.png
-   - assets/images/honda-logo.png
-   - assets/images/mercedes-benz-logo.png
-   - assets/images/rectangle496.png
-   - assets/images/rectangle522.png
-   - assets/images/rectangle516.png
-   - assets/images/toyota-logo.png
-   - assets/images/acuraCdx.png
-   - assets/images/pic.png
-   - assets/images/pic2.png
-   - assets/images/p718.png
-   - assets/images/enginePower.png
-   - assets/images/maxTorque.png
-   - assets/images/acceleration.png
-   - assets/images/qa.png
-   - assets/images/answer.png
-   - assets/images/question.png
-   - assets/images/category.png
-   - assets/images/sunPie.png
-   - assets/images/finishWheel.png
-   - assets/images/porsche912.png
-   - assets/images/mcLaren720s.png
-   - assets/images/acuraCDX.png
-   - assets/images/porsche718.png
-   - assets/images/macan2020.png
+   - assets/icons/
+   - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

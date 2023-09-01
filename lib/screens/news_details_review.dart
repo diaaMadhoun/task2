@@ -1,11 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task2/widgets/container_expanded.dart';
 import 'package:task2/widgets/interaction.dart';
 import 'package:task2/widgets/list/list_category.dart';
+
 import '../model/categoryBrand.dart';
 import '../widgets/list/list_comments.dart';
 
@@ -17,21 +18,25 @@ class NewsDetailsReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<CategoryBrand> categories = [
-      const CategoryBrand('Hot', ListComments()),
-      const CategoryBrand('Latest', ListComments(),),
+       const CategoryBrand('Hot', ListComments(paddingVertical: 30,)),
+       const CategoryBrand('Latest', ListComments(paddingVertical: 30,),),
     ];
 
     return Scaffold(
-      bottomNavigationBar: const Interaction(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leadingWidth: 0,
         elevation: 0,
         leading: Padding(
           padding: EdgeInsetsDirectional.only(start: 20.w),
-          child: const Icon(
-            Icons.arrow_back,
-            color: Colors.grey,
+          child: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+            ),
           ),
         ),
         title: Text(
@@ -141,10 +146,18 @@ class NewsDetailsReview extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30.h,),
+            SizedBox(
+              height: 30.h,
+            ),
             ContainerExpanded(
-              paddingVertical: 18,
-                color: Colors.white, child: ListCategory(list: categories)),
+                color: Colors.white,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    ListCategory(list: categories,paddingTop: 18,),
+                    const Interaction(),
+                  ],
+                )),
           ],
         ),
       ),

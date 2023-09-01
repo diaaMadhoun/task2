@@ -1,29 +1,19 @@
-// ignore_for_file: unrelated_type_equality_checks
-
-import 'dart:async';
+import  'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
-import 'package:task2/model/brands.dart';
 import '../api/api_controller.dart';
-import '../model/cars.dart';
-import '../model/sliders.dart';
+import '../model/home.dart';
 
 class HomeController extends GetxController{
 
-  RxInt currentPage = 0.obs;
+  int currentPage = 0;
   bool isFirstAutoPlay = true;
-  List<Cars>? carsData;
-  final  _sliders = <Sliders>[].obs;
-  final _brands = <Brands>[].obs;
-  final _cars = <Cars>[].obs;
+  Home home = Home();
+  bool loading = true;
 
 
   final PageController pageController = PageController();
 
-  List<Sliders> get sliders => _sliders;
-  List<Brands> get brands => _brands;
-  List<Cars> get cars => _cars;
 
 
 
@@ -34,6 +24,7 @@ class HomeController extends GetxController{
     _fetchData();
     _startAutoPlay(pageController);
   }
+
 
 
 
@@ -57,11 +48,8 @@ class HomeController extends GetxController{
   }
 
   Future<void> _fetchData() async {
-
-    _sliders.assignAll(await ApiController().getSliders());
-    _brands.assignAll(await ApiController().getBrands());
-    _cars.assignAll(await ApiController().getCars());
-
+    home = await ApiController().getHome();
+    loading = false;
+    update();
   }
-
 }

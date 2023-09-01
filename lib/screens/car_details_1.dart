@@ -41,8 +41,7 @@ class CarDetails1 extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back,
+        iconTheme: const IconThemeData(
           color: Colors.grey,
         ),
         title: Row(
@@ -110,8 +109,43 @@ class CarDetails1 extends StatelessWidget {
               children: [
                 ListCategory(list: categories),
                 SizedBox(height: 30.h,),
-                 CustomeButton(margin: 0, text: 'Get Offers from Dealer',onPressed: () {
-                   _displayBottomSheet(context);
+                 CustomeButton(margin: 20, text: 'Get Offers from Dealer',onPressed: () {
+                   Get.bottomSheet(Container(
+                     decoration: const BoxDecoration(
+                       color: Colors.white,
+                       borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                     ),
+                     padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                     height: 520.h,
+                     child: Padding(
+                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                       child: SingleChildScrollView(
+                         child: Column(
+                           children: [
+                             Row(
+                               children: [
+                                 const Spacer(),
+                                 Text('Get Offers from Dealer',style: GoogleFonts.roboto(
+                                   fontSize: 14.sp,
+                                   color: Colors.grey,
+                                 ),),
+                                 const Spacer(),
+                                 const Icon(Icons.close,color: Colors.grey,),
+                               ],
+                             ),
+                             SizedBox(height: 30.h,),
+                             const CarWidget(image: 'assets/images/p718.png', name: 'Porsche 718', subTitle: 'Porsche/Luxury/The 2.3L EcoBoost', price: '\$62,000.00-\$74,000.00', colorContainer: Color(0xFFF1F2F3)),
+                             SizedBox(height: 20.h,),
+                             const CustomTextFiled(suffix: 'assets/icons/close.svg', label: 'Phone number', marginBottom: 28),
+                             const CustomTextFiled(suffix: 'assets/icons/close.svg', label: 'Name', marginBottom: 28),
+                             SizedBox(height: 5.h,),
+                             SizedBox(height: 30.h,),
+                             CustomeButton(margin: 0, text: 'Submit', onPressed: () {},)
+                           ],
+                         ),
+                       ),
+                     ),
+                   ),);
                  },),
               ],
             ),
@@ -121,85 +155,5 @@ class CarDetails1 extends StatelessWidget {
     );
   }
 
-  Future _displayBottomSheet(BuildContext context) {
-    return showModalBottomSheet(
-      isScrollControlled: true,
-      backgroundColor: Colors.white,
-      barrierColor: Colors.black.withOpacity(0.7),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
-      ),
-      context: context,
-      builder: (context) => Container(
-        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
-        height: 520.h,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    const Spacer(),
-                    Text('Get Offers from Dealer',style: GoogleFonts.roboto(
-                      fontSize: 14.sp,
-                      color: Colors.grey,
-                    ),),
-                    const Spacer(),
-                    const Icon(Icons.close,color: Colors.grey,),
-                  ],
-                ),
-                SizedBox(height: 30.h,),
-                const CarWidget(image: 'assets/images/p718.png', name: 'Porsche 718', subTitle: 'Porsche/Luxury/The 2.3L EcoBoost', price: '\$62,000.00-\$74,000.00', colorContainer: Color(0xFFF1F2F3)),
-                SizedBox(height: 20.h,),
-                const CustomTextFiled(suffix: 'assets/icons/close.svg', label: 'Phone number', marginBottom: 28),
-                const CustomTextFiled(suffix: 'assets/icons/close.svg', label: 'Phone number', marginBottom: 28),
-                SizedBox(height: 5.h,),
-                DropdownButtonFormField(
-                  focusColor: Colors.grey,
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 2,
-                        color: Colors.grey.shade300,
-                      ),
-                    ),
-                    label: Text('City',style: GoogleFonts.roboto(
-                      fontSize: 14.sp,
-                      color: Colors.grey,
-                    ),),
-                  ),
-                  icon: const Icon(Icons.keyboard_arrow_down_rounded,color: Colors.grey,),
-                  value: _cityIdValue.value,
-                  onChanged: (value) {
-                    _cityIdValue.value = value!;
-                  },
-                  isExpanded: true,
-                  items: const [
-                    DropdownMenuItem(
-                      value: 1,
-                      child: Text('Palmer'),
-                    ),
-                    DropdownMenuItem(
-                      value: 2,
-                      child: Text('Rafah'),
-                    ),
-                    DropdownMenuItem(
-                      value: 3,
-                      child: Text('Jpalia'),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30.h,),
-                CustomeButton(margin: 0, text: 'Submit', onPressed: () {},)
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
 

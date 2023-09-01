@@ -7,11 +7,13 @@ class RowTitle extends StatelessWidget {
   const RowTitle({
     required this.category,
      this.allOrMor,
+    this.onPressed,
     super.key,
   });
 
   final String category;
   final String? allOrMor;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +28,13 @@ class RowTitle extends StatelessWidget {
             color: Colors.black,
           ),),
           const Spacer(),
-          Text(allOrMor ?? '',style: GoogleFonts.roboto(
-            fontSize: 12.sp,
-            color: const Color(0xFF1DB854),
-          ),),
+          GestureDetector(
+            onTap: onPressed,
+            child: Text(allOrMor ?? '',style: GoogleFonts.roboto(
+              fontSize: 12.sp,
+              color: const Color(0xFF1DB854),
+            ),),
+          ),
           Visibility(
             visible: allOrMor != null,
             child:SvgPicture.asset('assets/icons/arrow.svg'),

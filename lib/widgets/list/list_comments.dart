@@ -5,14 +5,18 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ListComments extends StatelessWidget {
   const ListComments({
+    this.paddingVertical =0,
     super.key,
   });
+
+  final double paddingVertical;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 30.h),
+        physics: const RangeMaintainingScrollPhysics(),
+        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: paddingVertical.h),
         scrollDirection: Axis.vertical,
         itemCount: 3,
         shrinkWrap: true,

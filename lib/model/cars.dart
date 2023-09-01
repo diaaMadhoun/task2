@@ -11,7 +11,7 @@ late int? ratingsCount;
 late String enginePower;
 late String maxTorque;
 late String acceleration;
-late Brands? brand;
+late Brands brand;
 
   Cars();
 
@@ -25,7 +25,7 @@ late Brands? brand;
     enginePower = json['engine_power'];
     maxTorque = json['max_torque'];
     acceleration = json['acceleration'];
-    brand = json['brand'] != null ? Brands.fromJson(json['brand']) : null;
+    brand = (json['brand'] != null ? Brands.fromJson(json['brand']) : null)!;
   }
 
   Map<String, dynamic> toJson() {

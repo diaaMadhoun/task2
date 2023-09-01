@@ -1,12 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../api/api_controller.dart';
 import '../model/cars.dart';
 
-class BuyCarController extends GetxController{
+class SearchBrandController extends GetxController{
+
 
   List<Cars> cars = <Cars>[];
+  int brandId;
   bool loading = true;
-
+  SearchBrandController(this.brandId);
 
 
   @override
@@ -17,7 +21,7 @@ class BuyCarController extends GetxController{
 
 
   Future<void> _fetchData() async {
-    cars.assignAll(await ApiController().getCars());
+    cars.assignAll(await ApiController().getBrandsDetails(brandId));
     loading = false;
     update();
   }

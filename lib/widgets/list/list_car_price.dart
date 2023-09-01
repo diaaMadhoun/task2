@@ -22,7 +22,6 @@ class _ListCarPriceState extends State<ListCarPrice> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: EdgeInsets.only(right: 20.w,left: 20.w,top: 20.h),
         scrollDirection: Axis.vertical,
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,

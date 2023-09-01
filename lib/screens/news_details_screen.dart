@@ -2,29 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:task2/widgets/list/list_vertical.dart';
-import 'package:task2/widgets/news_car.dart';
+import 'package:task2/widgets/car_videw_widget.dart';
 import '../widgets/car_price.dart';
 import '../widgets/interaction.dart';
+import 'package:get/get.dart';
 
 
 class NewsDetailsScreen extends StatelessWidget {
-  const NewsDetailsScreen({Key? key}) : super(key: key);
+  const   NewsDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const Interaction(),
+      bottomNavigationBar:  Interaction(
+        onPressedComment:  () {
+          Get.toNamed('/news_details_review');
+        },
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leadingWidth: 0,
         elevation: 0,
-        leading: Padding(
-          padding: EdgeInsetsDirectional.only(start: 20.w),
-          child: const Icon(
-            Icons.arrow_back,
-            color: Colors.grey,
-          ),
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
         ),
         title: Text(
           'News',
@@ -249,14 +248,13 @@ class NewsDetailsScreen extends StatelessWidget {
                 SizedBox(
                   height: 19.h,
                 ),
-                ListVertical(
-                    height: 86.h,
-                    color: const Color(0xFFF1F2F3),
-                    child: const NewsCar(
-                        name:
-                            '2019 Macan Facelift Launched; More\nAffordable Than Before',
-                        modal: 'By  Sonny  Jul 29,2020',
-                        image: 'assets/images/rectangle496.png')),
+                 CarVideoWidget(
+                  onPressed: () {
+                    Get.toNamed('/video_screen');
+                  },
+                  name: '2019 Macan Facelift Launched; More\nAffordable Than Before',
+                  model: 'By  Sonny  Jul 29,2020',
+                ),
               ],
             ),
           ),

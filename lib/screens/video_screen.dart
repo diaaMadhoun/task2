@@ -4,8 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task2/widgets/car_price.dart';
 import 'package:task2/widgets/interaction.dart';
-import 'package:task2/widgets/list/list_vertical.dart';
-import 'package:task2/widgets/news_car.dart';
+import 'package:get/get.dart';
+
+import '../widgets/car_videw_widget.dart';
 
 class VideoScreen extends StatelessWidget {
   const VideoScreen({Key? key}) : super(key: key);
@@ -13,15 +14,24 @@ class VideoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const Interaction(),
+      bottomNavigationBar:  Interaction(
+        onPressedComment: () {
+          Get.toNamed('/video_review');
+        },
+      ),
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.grey,
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.grey,
+          ),
         ),
         actions: [
           Padding(
@@ -133,16 +143,14 @@ class VideoScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 19.h,),
-            ListVertical(
-                height: 86.h,
-                color: const Color(0xFFF1F2F3),
-                child: const NewsCar(
-                    name: '2020 Porsche Macan review – the\nultimate sports SUV?',
-                    modal: 'By  basshead  Oct 20,2020',
-                    image: 'assets/images/rectangle496.png')),
+            const CarVideoWidget(
+              name: '2020 Porsche Macan review – the\nultimate sports SUV?',
+              model: 'By  basshead  Oct 20,2020',
+            ),
           ],
         ),
       ),
     );
   }
 }
+

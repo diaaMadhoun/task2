@@ -49,6 +49,7 @@ class DataProfile extends StatelessWidget {
           ),
           TextField(
             decoration: InputDecoration(
+              enabled: false,
               label:  Row(
                 children: [
                   Text(label),

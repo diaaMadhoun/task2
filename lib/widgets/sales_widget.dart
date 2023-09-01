@@ -10,7 +10,7 @@ class SalesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 6,
