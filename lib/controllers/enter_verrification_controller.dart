@@ -39,6 +39,7 @@ class EnterVerificationController extends GetxController {
   }
 
   void phoneAuth() async{
+    print('ddddddddd${phone}');
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phone,
       timeout: const Duration(seconds: 60),
@@ -46,8 +47,7 @@ class EnterVerificationController extends GetxController {
       verificationFailed: (FirebaseAuthException e) {},
       codeSent: (
           String verificationId, int? resendToken) async{
-        verifId = verificationId;
-
+          verifId = verificationId;
       },
       codeAutoRetrievalTimeout: (String verificationId) {},
     );
@@ -55,7 +55,7 @@ class EnterVerificationController extends GetxController {
 
   sentCoce() async{
     try{
-      String smsCode = c1.text + c2.text + c3.text + c4.text + c5.text + c6.text;
+      String smsCode = c1.text.trim() + c2.text.trim() + c3.text.trim() + c4.text.trim() + c5.text.trim() + c6.text.trim();
       PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verifId!, smsCode: smsCode);
       await _auth.signInWithCredential(credential).then((value) {
         if(value.user != null){

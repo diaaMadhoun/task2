@@ -6,6 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:task2/screens/car_details.dart';
+import 'package:task2/screens/search_brand_screen.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/header.dart';
 import '../widgets/row_title.dart';
@@ -252,37 +254,42 @@ class HomeScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 11.w, vertical: 10.h),
-                            width: 102.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CachedNetworkImage(
-                                  imageUrl: controller.home.data!.brands![index].logo,
-                                  placeholder: (context, url) => const SpinKitFadingCircle(
-                                    color: Color(0xFF1DB854),
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(SearchBrandScreen(brandId: controller.home.data!.brands![index].id));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 11.w, vertical: 10.h),
+                              width: 102.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CachedNetworkImage(
+                                    imageUrl: controller.home.data!.brands![index].logo,
+                                    placeholder: (context, url) => const SpinKitFadingCircle(
+                                      color: Color(0xFF1DB854),
+                                    ),
+                                    width: 45.w,
+                                    height: 45.h,
                                   ),
-                                  width: 45.w,
-                                  height: 45.h,
-                                ),
-                                SizedBox(
-                                  height: 3.h,
-                                ),
-                                SizedBox(height: 8.h,),
-                                Text(
-                                  controller.home.data!.brands![index].name,
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 12.sp,
-                                    color: Colors.grey,
+                                  SizedBox(
+                                    height: 3.h,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: 8.h,),
+                                  Text(
+                                    controller.home.data!.brands![index].name,
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 12.sp,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
@@ -307,62 +314,67 @@ class HomeScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Container(
-                            padding: EdgeInsetsDirectional.only(
-                                start: 15.w, end: 15.w, top: 12, bottom: 13.h),
-                            width: 150.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Align(
-                                    alignment: AlignmentDirectional.bottomEnd,
-                                    child:
-                                    SvgPicture.asset('assets/icons/heart.svg')),
-                                SizedBox(height: 5.h,),
-                                CachedNetworkImage(
-                                  imageUrl: controller.home.data!.cars![index].image,
-                                  placeholder: (context, url) => const SpinKitFadingCircle(
-                                    color: Color(0xFF1DB854),
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(CarDetails(carId: controller.home.data!.cars![index].id));
+                            },
+                            child: Container(
+                              padding: EdgeInsetsDirectional.only(
+                                  start: 15.w, end: 15.w, top: 12, bottom: 13.h),
+                              width: 150.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                      alignment: AlignmentDirectional.bottomEnd,
+                                      child:
+                                      SvgPicture.asset('assets/icons/heart.svg')),
+                                  SizedBox(height: 5.h,),
+                                  CachedNetworkImage(
+                                    imageUrl: controller.home.data!.cars![index].image,
+                                    placeholder: (context, url) => const SpinKitFadingCircle(
+                                      color: Color(0xFF1DB854),
+                                    ),
+                                    height: 80.h,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
                                   ),
-                                  height: 80.h,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                ),
-                                SizedBox(
-                                  height: 18.h,
-                                ),
-                                Text(
-                                  controller.home.data!.cars![index].name,
-                                  maxLines: 1,
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87,
+                                  SizedBox(
+                                    height: 18.h,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 6.h,
-                                ),
-                                Text(
-                                  controller.home.data!.cars![index].price.toString()  ,
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xFF1DB854),
+                                  Text(
+                                    controller.home.data!.cars![index].name,
+                                    maxLines: 1,
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
+                                    ),
                                   ),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  'Expected Launch-Sep 18',
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 10.sp,
-                                    color: Colors.grey,
+                                  SizedBox(
+                                    height: 6.h,
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    controller.home.data!.cars![index].price.toString()  ,
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xFF1DB854),
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    'Expected Launch-Sep 18',
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 10.sp,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },

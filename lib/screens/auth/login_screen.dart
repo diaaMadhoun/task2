@@ -16,6 +16,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String countryCode = '970';
     double sizeHeight = MediaQuery.of(context).size.height;
     return  Scaffold(
       backgroundColor: Colors.white,
@@ -36,8 +37,17 @@ class LoginScreen extends StatelessWidget {
                 Container(
                   margin: EdgeInsetsDirectional.only(start: 30.w,end: 30.w,top: 145.h),
                   child:  IntlPhoneField(
+                    onChanged: (value) {
+                      countryCode = value.countryCode;
+                    },
                     decoration: const InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
                     ),
+
                     controller: controller.c1,
                     cursorColor: Colors.black87,
                     showCountryFlag: false,
@@ -89,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                   text: 'Continue',
                   margin: 30,
                   onPressed: () {
-                    Get.to(EnterVerificationScreen(phone: controller.c1.text.trim()));
+                    Get.to(EnterVerificationScreen(phone: countryCode + controller.c1.text));
                   },
                 ),
                 SizedBox(height: sizeHeight/ 4.3,),

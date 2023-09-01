@@ -11,5 +11,11 @@ class LoginScreenController extends GetxController{
     c1 = TextEditingController();
   }
 
+  @override
+  void dispose() {
+    c1.dispose();
+    super.dispose();
+  }
+
 
 }
